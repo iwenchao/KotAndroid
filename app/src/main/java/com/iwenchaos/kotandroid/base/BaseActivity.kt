@@ -18,6 +18,10 @@ abstract class BaseActivity<P : IPresenter<*>> : DaggerAppCompatActivity(), IApp
     lateinit var mPresenter: P
 
 
+    override fun beforeInflateView() {
+
+    }
+
     override fun showLoading() {
 
     }
