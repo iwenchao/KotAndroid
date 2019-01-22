@@ -1,7 +1,8 @@
 package com.iwenchaos.kotandroid.di.module
 
+import android.app.Application
 import android.content.Context
-import com.iwenchaos.kotandroid.base.BaseApplication
+import com.iwenchaos.kotandroid.common.ActivityLifecycleCallbacksImpl
 import dagger.Binds
 import dagger.Module
 
@@ -15,8 +16,12 @@ import dagger.Module
 abstract class AppModule {
 
     @Binds
-    abstract fun provideContext(application: BaseApplication): Context
+    abstract fun provideContext(application: Application): Context
 
 
-//    abstract fun provideActivityLifecycleCallbacks(callback: Activity)
+    @Binds
+    abstract fun provideActivityLifecycleCallbacks(callback: ActivityLifecycleCallbacksImpl): Application.ActivityLifecycleCallbacks
+
+
+
 }

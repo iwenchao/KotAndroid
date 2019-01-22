@@ -3,6 +3,7 @@ package com.iwenchaos.kotandroid.di.component
 import android.app.Application
 import com.iwenchaos.kotandroid.base.BaseApplication
 import com.iwenchaos.kotandroid.di.module.AppModule
+import com.iwenchaos.kotandroid.di.module.CommonModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,11 +17,14 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = [
-    AndroidSupportInjectionModule::class,//配置绑定以确保{@code dagger.android}和{@code * dagger.android.support}框架类的可用性。, 此模块应安装在将使用这些类型的root-most *组件中。
-    AppModule::class
+@Component(
+    modules = [
+        AndroidSupportInjectionModule::class,//配置绑定以确保{@code dagger.android}和{@code * dagger.android.support}框架类的可用性。, 此模块应安装在将使用这些类型的root-most *组件中。
+        AppModule::class,
+        CommonModule::class
 
-])
+    ]
+)
 interface ApplicationComponent : AndroidInjector<BaseApplication> {
 
     @dagger.Component.Builder
