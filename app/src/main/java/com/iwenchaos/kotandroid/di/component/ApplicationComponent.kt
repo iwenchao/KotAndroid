@@ -5,6 +5,7 @@ import com.iwenchaos.kotandroid.base.BaseApplication
 import com.iwenchaos.kotandroid.di.module.ActivityBindingModule
 import com.iwenchaos.kotandroid.di.module.AppModule
 import com.iwenchaos.kotandroid.di.module.CommonModule
+import com.iwenchaos.kotandroid.di.module.HttpModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -23,8 +24,8 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,//用于绑定android扩展的组件 如v4等
         AppModule::class,
         CommonModule::class,
-        ActivityBindingModule::class//用于绑定activity
-
+        ActivityBindingModule::class,//用于绑定activity
+        HttpModule::class//用于绑定网络相关对象
     ]
 )
 interface ApplicationComponent : AndroidInjector<BaseApplication> {

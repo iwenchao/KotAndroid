@@ -10,7 +10,7 @@ import com.iwenchaos.kotandroid.R
 import com.iwenchaos.kotandroid.base.mvp.BasePresenter
 import com.iwenchaos.kotandroid.base.mvp.IModel
 import com.iwenchaos.kotandroid.common.Constants
-import com.iwenchaos.kotandroid.ui.MainActivity
+import com.iwenchaos.kotandroid.ui.main.activity.MainActivity
 import com.iwenchaos.kotandroid.util.CommonUtil
 import com.iwenchaos.kotandroid.util.DensityUtil
 import com.jakewharton.rxbinding2.view.RxView

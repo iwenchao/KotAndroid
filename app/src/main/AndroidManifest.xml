@@ -18,7 +18,7 @@
                 android:value="680" />
 
 
-        <activity android:name=".ui.MainActivity"/>
+        <activity android:name=".ui.main.activity.MainActivity"/>
 
         <activity android:name=".ui.splash.SplashActivity"
                 android:screenOrientation="portrait">
