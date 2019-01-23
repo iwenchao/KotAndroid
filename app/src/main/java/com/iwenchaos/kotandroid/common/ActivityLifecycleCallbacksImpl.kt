@@ -26,7 +26,7 @@ class ActivityLifecycleCallbacksImpl @Inject constructor() : Application.Activit
         if (activity is IAppCompatActivity) {
             activity.beforeInflateView()
             activity.setContentView(activity.getLayoutResId())
-            activity.startInitialize()
+            activity.initialize()
         }
 
     }

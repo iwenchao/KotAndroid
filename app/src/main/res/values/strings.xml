@@ -111,5 +111,6 @@
     <string name="qr_code_image">QR Code Image</string>
     <string name="light">Light</string>
     <string name="text_scanning_tips">Align the QR code within the frame to scan</string>
+    <string name="click_again_quit">双击退出应用</string>
 
 </resources>

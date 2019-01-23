@@ -23,7 +23,7 @@ class SplashActivity : BaseActivity<SplashPresenter>(), SplashContract.View, IAp
     override fun getLayoutResId(): Int = R.layout.activity_splash
 
 
-    override fun startInitialize() {
+    override fun initialize() {
         mPresenter.onAttach(this)
 
     }

@@ -24,7 +24,7 @@ interface IAppCompatActivity {
     /**
      * 开始初始化
      */
-    fun startInitialize()
+    fun initialize()
 
 
 }
