@@ -3,6 +3,7 @@ package com.iwenchaos.kotandroid.common
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import com.iwenchaos.kotandroid.common.inter.IAppCompatActivity
 import javax.inject.Inject
 
 /**
@@ -19,6 +20,13 @@ class ActivityLifecycleCallbacksImpl @Inject constructor() : Application.Activit
     override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
         if (!mActivityStack.contains(activity)) {
             mActivityStack.add(activity)
+        }
+
+        // 进入activity声明周期oncreate流程
+        if (activity is IAppCompatActivity) {
+            activity.beforeInflateView()
+            activity.setContentView(activity.getLayoutResId())
+            activity.startInitialize()
         }
 
     }

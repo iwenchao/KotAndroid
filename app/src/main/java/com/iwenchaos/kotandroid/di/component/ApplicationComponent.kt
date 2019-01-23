@@ -20,10 +20,10 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        AndroidSupportInjectionModule::class,//配置绑定以确保{@code dagger.android}和{@code * dagger.android.support}框架类的可用性。, 此模块应安装在将使用这些类型的root-most *组件中。
+        AndroidSupportInjectionModule::class,//用于绑定android扩展的组件 如v4等
         AppModule::class,
         CommonModule::class,
-        ActivityBindingModule::class
+        ActivityBindingModule::class//用于绑定activity
 
     ]
 )

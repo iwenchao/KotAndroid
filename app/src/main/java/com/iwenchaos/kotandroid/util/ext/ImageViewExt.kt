@@ -9,7 +9,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withC
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.iwenchaos.kotandroid.R
-import com.iwenchaos.kotandroid.common.GlideApp
+import com.iwenchaos.kotandroid.common.glide.GlideApp
 
 /**
  * Created by chaos

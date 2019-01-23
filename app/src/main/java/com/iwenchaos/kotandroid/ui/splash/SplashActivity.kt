@@ -4,6 +4,7 @@ import android.widget.TextView
 import com.iwenchaos.kotandroid.R
 import com.iwenchaos.kotandroid.base.BaseActivity
 import com.iwenchaos.kotandroid.common.inter.IAppCompatActivity
+import com.iwenchaos.kotandroid.common.inter.TranslucentNavigation
 import com.iwenchaos.kotandroid.ui.splash.mvp.SplashContract
 import com.iwenchaos.kotandroid.ui.splash.mvp.SplashPresenter
 import com.iwenchaos.kotandroid.util.ext.showImage
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
  * on 2019/1/22. 21:12
  * 文件描述：倒计时+启动动画
  */
+@TranslucentNavigation
 class SplashActivity : BaseActivity<SplashPresenter>(), SplashContract.View, IAppCompatActivity {
 
 
