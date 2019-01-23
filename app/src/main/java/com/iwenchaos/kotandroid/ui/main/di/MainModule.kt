@@ -1,13 +1,16 @@
 package com.iwenchaos.kotandroid.ui.main.di
 
 import com.iwenchaos.kotandroid.di.scope.ActivityScope
+import com.iwenchaos.kotandroid.di.scope.FragmentScope
 import com.iwenchaos.kotandroid.net.ApiService
 import com.iwenchaos.kotandroid.ui.main.activity.MainActivity
+import com.iwenchaos.kotandroid.ui.main.fragment.HomeFragment
 import com.iwenchaos.kotandroid.ui.main.mvp.MainContract
 import com.iwenchaos.kotandroid.ui.main.mvp.MainModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.android.ContributesAndroidInjector
 
 /**
  * Created by chaos
@@ -31,5 +34,10 @@ abstract class MainModule {
             return MainModel(apiService)
         }
     }
+
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun contributeHomeFragment(): HomeFragment
 
 }
