@@ -2,5 +2,6 @@
 <resources>
     <attr name="colorPrimaryLight" format="reference|color" />
     <attr name="colorCardBackground" format="reference|color" />
+    <attr name="colorDefaultBackground" format="reference|color" />
 
 </resources>
