@@ -5,14 +5,21 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.SharedPreferences
 import android.view.animation.OvershootInterpolator
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.iwenchaos.kotandroid.R
 import com.iwenchaos.kotandroid.base.mvp.BasePresenter
 import com.iwenchaos.kotandroid.base.mvp.IModel
 import com.iwenchaos.kotandroid.common.Constants
+import com.iwenchaos.kotandroid.ui.MainActivity
 import com.iwenchaos.kotandroid.util.CommonUtil
 import com.iwenchaos.kotandroid.util.DensityUtil
+import com.jakewharton.rxbinding2.view.RxView
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
@@ -49,6 +56,11 @@ class SplashPresenter @Inject constructor(
         setTextAnimation()
         setTimerParams()
         mView?.showBackgroundImage(mImageList[Random().nextInt(mImageList.size)])
+        disposable.add(intervalDisposable())
+        val timerDisposable = timerDisposable()
+        if (timerDisposable != null) {
+            disposable.add(timerDisposable)
+        }
     }
 
     /**
@@ -85,9 +97,36 @@ class SplashPresenter @Inject constructor(
     }
 
     private fun setTimerParams() {
-
+        val layoutParams = mView?.getTimerTextView()?.layoutParams as ConstraintLayout.LayoutParams
+        layoutParams.topMargin = DensityUtil.getStatusBarHeight(mContext) + DensityUtil.dip2px(24)
     }
 
+    private fun intervalDisposable(): Disposable {
+        return Observable.intervalRange(0, Constants.SPLASH_TIME, 0, 1, TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext {
+                mView?.showTime(String.format("%d s", Constants.SPLASH_TIME - it))
+            }
+            .doOnComplete {
+                startNewActivity()
+            }
+            .subscribe()
+    }
+
+    private fun timerDisposable(): Disposable? {
+        if (mView == null) return null
+        return RxView.clicks(mView!!.getTimerTextView())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                startNewActivity()
+            }
+    }
+
+
+    private fun startNewActivity() {
+        disposable.clear()
+        mView?.startNewActivity(MainActivity::class.java)
+    }
 
     override fun onDestroy() {
         super.onDestroy()

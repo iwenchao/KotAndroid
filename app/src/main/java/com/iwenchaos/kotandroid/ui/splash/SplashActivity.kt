@@ -1,5 +1,6 @@
 package com.iwenchaos.kotandroid.ui.splash
 
+import android.content.Intent
 import android.widget.TextView
 import com.iwenchaos.kotandroid.R
 import com.iwenchaos.kotandroid.base.BaseActivity
@@ -40,7 +41,7 @@ class SplashActivity : BaseActivity<SplashPresenter>(), SplashContract.View, IAp
     }
 
     override fun showTime(time: String) {
-
+        timerTv.text = time
     }
 
     override fun showBackgroundImage(resId: Int) {
@@ -48,6 +49,8 @@ class SplashActivity : BaseActivity<SplashPresenter>(), SplashContract.View, IAp
     }
 
     override fun startNewActivity(clazz: Class<*>) {
+        startActivity(Intent(this, clazz))
+        finish()
     }
 
     override fun onDestroy() {
