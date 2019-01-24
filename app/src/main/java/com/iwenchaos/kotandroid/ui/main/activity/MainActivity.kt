@@ -4,6 +4,8 @@ import android.content.Intent
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.iwenchaos.kotandroid.R
@@ -79,6 +81,18 @@ class MainActivity : BaseActivity<MainPresenter>(), MainContract.View, Navigatio
         viewPager.setCurrentItem(index, true)
     }
 
+
+    override fun supportFragmentManager(): FragmentManager = supportFragmentManager
+
+    override fun setPagerAdapter(adapter: FragmentStatePagerAdapter) {
+        viewPager.adapter = adapter
+        viewPager.offscreenPageLimit = 4
+
+    }
+
+    override fun startNewActivity(intent: Intent) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     override fun onBackPressed() {
         when {

@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import com.iwenchaos.kotandroid.base.mvp.BasePresenter
 import com.iwenchaos.kotandroid.base.mvp.IModel
+import com.iwenchaos.kotandroid.common.FragmentPagerAdapter
+import com.iwenchaos.kotandroid.ui.main.fragment.HomeFragment
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -20,7 +22,14 @@ class MainPresenter @Inject constructor(
 
     @Inject
     lateinit var mContext: Context
-
+    @Inject
+    lateinit var mHomeFragment: HomeFragment
+    @Inject
+    lateinit var mHomeFragment2: HomeFragment
+    @Inject
+    lateinit var mHomeFragment3: HomeFragment
+    @Inject
+    lateinit var mHomeFragment4: HomeFragment
 
     private var mFragmentList= mutableListOf<Fragment>()
 
@@ -32,7 +41,7 @@ class MainPresenter @Inject constructor(
     }
 
     private fun  initEvent(){
-
+        setupFragments()
     }
 
     /**
@@ -40,7 +49,12 @@ class MainPresenter @Inject constructor(
      */
     private fun setupFragments(){
         mFragmentList.clear()
-//        mFragmentList.add()
+        mFragmentList.add(mHomeFragment)
+        mFragmentList.add(mHomeFragment2)
+        mFragmentList.add(mHomeFragment3)
+        mFragmentList.add(mHomeFragment4)
+        val pagerAdapter = FragmentPagerAdapter(mView?.supportFragmentManager(), mFragmentList)
+        mView?.setPagerAdapter(pagerAdapter)
     }
 
 

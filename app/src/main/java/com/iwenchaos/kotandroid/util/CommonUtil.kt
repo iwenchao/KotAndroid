@@ -1,7 +1,10 @@
 package com.iwenchaos.kotandroid.util
 
 import android.graphics.Typeface
+import android.util.TypedValue
+import android.widget.ProgressBar
 import android.widget.TextView
+import com.iwenchaos.kotandroid.R
 
 /**
  * Created by chaos
@@ -17,6 +20,15 @@ object CommonUtil {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun setProgressbarColor(progressBar: ProgressBar?) {
+        val drawable = progressBar?.indeterminateDrawable?.mutate()
+        val ta = progressBar?.context?.obtainStyledAttributes(TypedValue().data, intArrayOf(R.attr.colorProgress))
+        val color = ta?.getColor(0, 0)
+        ta?.recycle()
+        drawable?.setColorFilter(color!!, android.graphics.PorterDuff.Mode.SRC_IN)
+        progressBar?.progressDrawable = drawable
     }
 
 }

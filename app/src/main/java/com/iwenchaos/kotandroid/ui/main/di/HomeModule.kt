@@ -1,6 +1,6 @@
 package com.iwenchaos.kotandroid.ui.main.di
 
-import androidx.fragment.app.Fragment
+import com.iwenchaos.kotandroid.ui.main.fragment.HomeFragment
 import com.iwenchaos.kotandroid.ui.main.mvp.home.HomeContract
 import dagger.Binds
 import dagger.Module
@@ -14,5 +14,5 @@ import dagger.Module
 abstract class HomeModule {
 
     @Binds
-    abstract fun provideHomeView(homeFragment: Fragment): HomeContract.View
+    abstract fun provideHomeView(homeFragment: HomeFragment): HomeContract.View
 }

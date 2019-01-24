@@ -1,6 +1,8 @@
 package com.iwenchaos.kotandroid.ui.main.mvp.home
 
+import com.iwenchaos.kotandroid.data.HomeBannerBean
 import com.iwenchaos.kotandroid.net.ApiService
+import io.reactivex.Observable
 import javax.inject.Inject
 
 /**
@@ -9,6 +11,10 @@ import javax.inject.Inject
  * 文件描述：
  */
 class HomeModel @Inject constructor(private val apiService: ApiService) : HomeContract.Model {
+
+
+
+    override fun getBannerData(): Observable<HomeBannerBean> = apiService.getHomeBanner()
 
 
     override fun onDestory() {
